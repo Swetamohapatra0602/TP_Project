@@ -1,0 +1,45 @@
+{
+  "user": {
+    "email": "sweta12345678@gmail.com",
+    "password": "1234",
+    "fullName": "SwetaM",
+    "emailPrefix": "sweta",
+    "emailDomain": "example.com",
+    "contactNumber": "1234567890"
+  },
+  "changePassword": {
+    "invalidCurrentPassword": "wrong-password",
+    "newPassword": "abcd",
+    "expectedError": "Current Password not match !!"
+  },
+  "paymentPending": {
+    "productName": "The Wimpy Kid Do -It- Yourself Book",
+    "pendingOrdersPath": "pending-orders.php"
+  },
+  "updateBillingAddress": {
+    "billingAddress": {
+      "address": "Bang1",
+      "state": "KT",
+      "city": "Bang1"
+    }
+  },
+  "purchaseAndTrackOrder": {
+    "billingAddress": {
+      "address": "bangalore",
+      "state": "KT",
+      "city": "Bang",
+      "pincode": "123456"
+    },
+    "shippingAddress": {
+      "address": "bangalore",
+      "state": "KT",
+      "city": "Bang",
+      "pincode": "123456"
+    },
+    "expectedOrderCount": 4,
+    "screenshots": {
+      "folder": "screenshots",
+      "filenamePrefix": "track-order"
+    }
+  }
+}
