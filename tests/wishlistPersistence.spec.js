@@ -9,7 +9,7 @@ let wishlist;
 test("TC-006 wishlist persists after logout and login", async ({ page, shopping }) => {
   const { session, account } = shopping;
 
-  wishlist = new wishlistPersistence(page);
+ let wishlist = new wishlistPersistence(page);
   await wishlist.product.open();
   await expect(wishlist.product.productHeading).toHaveText(wishlist.product.productName);
   await wishlist.saveToWishlist();

@@ -25,12 +25,6 @@ test("pending payment", async ({ page }) => {
   await BookPage.bookCategory.click();
   await BookPage.addToCart.click();
 
-  //Shipping
-  // await shippingPage.billingaddress.fill("bangalore")
-  // await shippingPage.bilingstate.fill("KT")
-  // await shippingPage.billingcity.fill("Bang")
-  // await shippingPage.billingpincode.fill("123456")
-  // await shippingPage.updateButton.click()
 
   //Proceed  to checkout
   await proceedToCheckOutPage.checkoutButton.click();

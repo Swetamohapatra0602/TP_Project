@@ -43,11 +43,7 @@ test("reject password change with an incorrect current password", async ({ page 
   await changePasswordPage.confirmPwTF.fill(newPassword);
   await changePasswordPage.changeButton.click();
   await expect.poll(() => passwordError).toBe(testData.changePassword.expectedError);
-  // await expect(changePasswordPage.changePWlink).toBeVisible();
-  // if (!await changePasswordPage.currentPwTF.isVisible()) {
-  //   await changePasswordPage.changePWlink.click();
-  // }
-  // await expect(changePasswordPage.currentPwTF).toBeVisible();
+  
 
 await expect(changePasswordPage.changePWlink).toBeVisible();
 

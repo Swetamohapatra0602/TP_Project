@@ -7,7 +7,7 @@ class updateProfile {
     this.contact = page.locator("#contactno");
     this.email = page.locator("#exampleInputEmail1");
     this.updateButton = page.locator('button[name="update"]');
-    this.welcomeName = page.locator(".cnt-account").getByText("Welcome -Manual Profile Check", { exact: true });
+    this.welcomeName = page.locator(".cnt-account").getByText(`Welcome -${testData.updateProfile.name}`, { exact: true });
   }
 
   async open() {

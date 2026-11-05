@@ -7,6 +7,7 @@ class updateBilling{
         this.billingpincodeTF=page.locator('//input[@id="billingpincode"]')
         this.updateButton=page.locator('//button[@name="update"]')
         
+        
     }
 }
 export default updateBilling

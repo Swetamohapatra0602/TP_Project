@@ -19,6 +19,7 @@ import logout from "../POM/logout.page";
 
 test("complete a purchase and track orders", async ({ page }) => {
   const { user } = testData;
+  //object destructuring :we are calling billingAddress, shippingAddress, screenshots.
   const { billingAddress, shippingAddress, screenshots } = testData.purchaseAndTrackOrder;
   const userEmail = `${user.emailPrefix}-${randomUUID()}@${user.emailDomain}`;
 
@@ -83,7 +84,7 @@ test("complete a purchase and track orders", async ({ page }) => {
   await billingPage.shippingpincode.fill(shippingAddress.pincode);
   await billingPage.updateButton.click();
 
-  //Reapply the billing address before checkout.
+  //Reapply the billing address before checkout.(because after adding shipping,billing gets erased)
   await shippingPage.billingaddress.fill(billingAddress.address);
   await shippingPage.bilingstate.fill(billingAddress.state);
   await shippingPage.billingcity.fill(billingAddress.city);

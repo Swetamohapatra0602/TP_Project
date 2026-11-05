@@ -1,8 +1,11 @@
 import { test, expect } from "./support/shopping.fixture";
 import updateProfile from "../POM/updateProfile.page";
+import testData from "../testData/testData.json";
+
+const profileData = testData.updateProfile;
 
 test.use({ screenshot: "only-on-failure", trace: "retain-on-failure" });
-test.setTimeout(60000);
+test.setTimeout(profileData.timeoutMs);
 
 let profile, original;
 
@@ -12,10 +15,10 @@ test("TC-009 update profile and verify persistence across login", async ({ page,
   profile = new updateProfile(page);
   await profile.open();
   original = { name: await profile.name.inputValue(), contact: await profile.contact.inputValue() };
-  await profile.update("Manual Profile Check", "9876543210", session);
+  await profile.update(profileData.name, profileData.contactNumber, session);
   await page.reload();
-  await expect(profile.name).toHaveValue("Manual Profile Check");
-  await expect(profile.contact).toHaveValue("9876543210");
+  await expect(profile.name).toHaveValue(profileData.name);
+  await expect(profile.contact).toHaveValue(profileData.contactNumber);
   await expect(profile.email).toHaveValue(account.email);
   await session.logout();
   await expect(session.loginLink).toBeVisible();
@@ -23,8 +26,8 @@ test("TC-009 update profile and verify persistence across login", async ({ page,
   await session.login(account);
   await expect(session.logoutLink).toBeVisible();
   await profile.open();
-  await expect(profile.name).toHaveValue("Manual Profile Check");
-  await expect(profile.contact).toHaveValue("9876543210");
+  await expect(profile.name).toHaveValue(profileData.name);
+  await expect(profile.contact).toHaveValue(profileData.contactNumber);
   await expect(profile.welcomeName).toBeVisible();
 });
 
@@ -36,3 +39,8 @@ test.afterEach(async ({ page, shopping }) => {
   await expect(profile.name).toHaveValue(original.name);
   await expect(profile.contact).toHaveValue(original.contact);
 });
+
+/*hook:
+Before test:  Workflow Tester
+During test:  Manual Profile Check
+After cleanup: Workflow Tester */

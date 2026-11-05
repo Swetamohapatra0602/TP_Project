@@ -27,3 +27,9 @@ test.afterEach(async ({ page }) => {
   await cart.clearCart();
   await expect(cart.emptyCart).toBeVisible();
 });
+
+
+/*After every test, I check whether the browser page is closed or the cart object is unavailable.
+ If either condition is true, I skip the cleanup. 
+ Otherwise, I clear the shopping cart and verify that the empty cart message is visible. 
+ This ensures test isolation and prevents test data from affecting subsequent test cases.*/

@@ -2,10 +2,12 @@ import { test, expect } from "@playwright/test";
 import testData from "../testData/testData.json";
 import myAccount from "../POM/myAccount.page";
 import updateBilling from "../POM/updateBillling.page";
+import logout from "../POM/logout.page";
 
-test("pending payment", async ({ page }) => {
+test("update billing", async ({ page }) => {
   //here we are loggin in using already saved login,shipping and billing.
-  // we will go to checkout and then click myaccount and go to payment pending page.there the product should be shown
+  // we will go to checkout and then click myaccount and go to payment pending page.
+  // there the product should be shown
 
   page.on("dialog", async (dialog) => {
     console.log(await dialog.message());
@@ -14,10 +16,11 @@ test("pending payment", async ({ page }) => {
 
   let myAccountPage = new myAccount(page);
   let updateBillingPage = new updateBilling(page);
+  const logoutPage = new logout(page);
 
   // Reuse the authenticated session created by auth.setup.js.
   await page.goto("./");
-  await expect(page.locator('a[href="logout.php"]')).toBeVisible();
+  await expect(logoutPage.logoutLink).toBeVisible();
 
   //click on my account
   await myAccountPage.myAccountHome.click();

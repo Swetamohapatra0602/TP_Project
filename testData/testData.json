@@ -7,6 +7,12 @@
     "emailDomain": "example.com",
     "contactNumber": "1234567890"
   },
+  "searchProduct": {
+    "homePath": "./",
+    "keyword": "TV",
+    "productName": "Micromax 81cm (32) HD Ready LED TV  (32T6175MHD, 2 x HDMI, 2 x USB)",
+    "resultsUrlPattern": "/search-result\\.php(?:\\?.*)?$"
+  },
   "changePassword": {
     "invalidCurrentPassword": "wrong-password",
     "newPassword": "abcd",
@@ -15,6 +21,11 @@
   "paymentPending": {
     "productName": "The Wimpy Kid Do -It- Yourself Book",
     "pendingOrdersPath": "pending-orders.php"
+  },
+  "updateProfile": {
+    "name": "Manual Profile Check",
+    "contactNumber": "9876543210",
+    "timeoutMs": 60000
   },
   "updateBillingAddress": {
     "billingAddress": {

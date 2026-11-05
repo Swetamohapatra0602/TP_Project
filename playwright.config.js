@@ -18,7 +18,7 @@ if (!["http:", "https:"].includes(baseURL.protocol)) {
 if (!baseURL.pathname.endsWith("/")) baseURL.pathname += "/";
 
 module.exports = defineConfig({
-  testDir: './tests',
+  testDir: "./tests",
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -28,34 +28,37 @@ module.exports = defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: "html",
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL: baseURL.href,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: "on-first-retry",
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'setup',
+      name: "setup",
       testMatch: /auth\.setup\.js/,
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices["Desktop Chrome"] },
     },
     {
-      name: 'chromium-authenticated',
+      name: "chromium-authenticated",
       testMatch: /(?:paymentPending|updateBillingAddress)\.spec\.js/,
-      dependencies: ['setup'],
+      dependencies: ["setup"],
       use: {
-        ...devices['Desktop Chrome'],
-        storageState: join(__dirname, 'playwright/.auth/user.json'),
+        ...devices["Desktop Chrome"],
+        storageState: join(__dirname, "playwright/.auth/user.json"),
       },
     },
     {
-      name: 'chromium',
-      testIgnore: [ /auth\.setup\.js/, /(?:paymentPending|updateBillingAddress)\.spec\.js/ ],
-      use: { ...devices['Desktop Chrome'] },
+      name: "chromium",
+      testIgnore: [
+        /auth\.setup\.js/,
+        /(?:paymentPending|updateBillingAddress)\.spec\.js/,
+      ],
+      use: { ...devices["Desktop Chrome"] },
     },
 
     // {

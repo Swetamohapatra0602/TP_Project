@@ -12,8 +12,8 @@ test("TC-007 add a wishlist product to cart", async ({ page, shopping }) => {
   const session = shopping.session;
 
   const workflow = new wishlistToCart(page);
-  wishlist = workflow.wishlist;
-  cart = workflow.cart;
+  let wishlist = workflow.wishlist;
+  let cart = workflow.cart;
 
   // Open the book and save it to the wishlist.
   await wishlist.product.open();
